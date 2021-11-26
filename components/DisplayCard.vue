@@ -6,12 +6,15 @@
           <b>Find Something to do</b>
         </p>
       </header>
-      <div class="content pt-4 pb-4">
-        <p class="pl-4"><strong>Activity:</strong> {{ activity }}</p>
-        <strong class="mt-2 pl-4">Type:</strong> {{ type }}
+        <div class="mt-5" v-if="$fetchState.pending">
+          <Loading />
+        </div>
+        <div v-else class="content pt-4 pb-4">
+        <strong class="pl-4">Activity:</strong> {{ event.activity }}</p>
+        <strong class="mt-2 pl-4">Type:</strong> {{ event.type }}
       </div>
       <div class="card-footer pb-3 is-justify-content-end">
-        <button class="button mr-3 is-info">Get a new one</button>
+        <button @click="$fetch" class="button mr-3 is-info">Get a new one</button>
       </div>
     </div>
   </div>
@@ -19,7 +22,15 @@
 
 <script>
 export default {
-props: ["activity", "type"]
+data() {
+    return {
+      event: {}
+    }
+},
+async fetch() {
+  this.event = await fetch("https://www.boredapi.com/api/activity")
+  .then(res => res.json())
+}
 }
 </script>
 
