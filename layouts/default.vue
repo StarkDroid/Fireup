@@ -8,13 +8,13 @@
 export default {
   head() {
     return {
-      title: "Fireup",
+      title: "LearnNuxt",
       meta: [
         {
           hid: "description",
           name: "description",
           content:
-            "Best place to find fun activities to do to keep yourself productive",
+            "Best place to find a curated list of implementation that NuxtJS has to offer",
         },
       ],
     };
