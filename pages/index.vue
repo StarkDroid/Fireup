@@ -8,11 +8,8 @@
 </template>
 
 <script>
-import pageHero from "~/components/PageHero.vue";
-import DisplayCard from '~/components/DisplayCard.vue';
 import axios from "axios"
 export default {
-  components: { pageHero, DisplayCard },
   data() {
     return {
       event: {}
