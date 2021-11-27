@@ -12,9 +12,9 @@
         <nav class="tabs is-boxed is-fullwidth">
           <div class="container">
             <ul>
-            <li class="is-active"><nuxt-link to="/">Activities</nuxt-link></li>
-            <li><nuxt-link to="bucket-list">Bucket List</nuxt-link></li>
-            <li><nuxt-link to="blog">Blog</nuxt-link></li>
+            <li><nuxt-link class="has-text-black" to="/">Activities</nuxt-link></li>
+            <li><nuxt-link class="has-text-black" to="bucket-list">Bucket List</nuxt-link></li>
+            <li><nuxt-link class="has-text-black" to="blog">Blog</nuxt-link></li>
             </ul>
           </div>
         </nav>
@@ -30,5 +30,11 @@ export default {};
 <style scoped>
 .custom-bg {
   background-color: #3d5afe;
+}
+
+a.nuxt-link-exact-active {
+  font-weight: bold;
+  color: white;
+  background-color: #00c58e;
 }
 </style>
