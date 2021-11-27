@@ -76,7 +76,7 @@ export default {
   background-color: #3d5afe;
 }
 
-a.nuxt-link-exact-active {
+.nuxt-link-exact-active {
   font-weight: bold;
   color: white;
   background-color: #00c58e;
