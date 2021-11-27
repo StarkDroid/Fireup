@@ -8,6 +8,17 @@
           Well...welcome aboard! 😃
         </p>
       </div>
+      <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+          <div class="container">
+            <ul>
+            <li class="is-active"><nuxt-link to="/">Activities</nuxt-link></li>
+            <li><nuxt-link to="bucket-list">Bucket List</nuxt-link></li>
+            <li><nuxt-link to="blog">Blog</nuxt-link></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </section>
   </div>
 </template>
