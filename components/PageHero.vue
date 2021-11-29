@@ -73,7 +73,21 @@ export default {
 
 <style scoped>
 .custom-bg {
-  background-color: #3d5afe;
+  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg, #e33b3b 0%, #ff357f 25%, #9844b7 50%, #576fe6 100%);
+  animation: background-shift 20s ease infinite;
+}
+
+@keyframes background-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .nuxt-link-exact-active {
