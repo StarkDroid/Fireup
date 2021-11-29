@@ -5,9 +5,19 @@
       <div v-for="blog of blogs" :key="blog.slug">
         <nuxt-link :to="{ name: 'blog-slug', params: { slug: blog.slug } }">
           <div class="container">
-            <img :src="blog.img" />
-            <h3>{{ blog.title }}</h3>
-            <p>{{ blog.description }}</p>
+            <div class="box has-background-info-light">
+              <div class="media">
+                <div class="media is-left">
+                    <img class="image is-128x128" :src="blog.img" />
+                </div>
+                <div class="media-content column is-vcentered">
+                  <div class="content ml-5">
+                    <h3>{{ blog.title }}</h3>
+                    <p>{{ blog.description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </nuxt-link>
       </div>
@@ -18,17 +28,16 @@
 <script>
 export default {
   async asyncData({ $content, params, error }) {
-    const blogs = await $content('blog', params.slug)
-      .only(['title', 'description', 'img', 'slug'])
-      .sortBy('createdAt', 'asc')
-      .fetch()
+    const blogs = await $content("blog", params.slug)
+      .only(["title", "description", "img", "slug"])
+      .sortBy("createdAt", "asc")
+      .fetch();
 
-      console.log(blogs)
+    console.log(blogs);
 
-    return { blogs }
-  }
-}
+    return { blogs };
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>

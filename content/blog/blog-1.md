@@ -1,6 +1,6 @@
 ---
 title: This is how we add Title
-description: Any random long description works absolutely fine here. Even with Emojis😉
+description: The title and the description is directly fetched from the blog content and dynamically displayed here along with the image😉
 slug: blog-1
 img: /images/blog-1.png
 ---
