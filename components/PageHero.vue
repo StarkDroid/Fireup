@@ -13,10 +13,9 @@
         </nav>
       </div>
       <div class="hero-body">
-        <p class="title has-text-white is-size-1">Oh Hello there 👋</p>
-        <p class="subtitle container has-text-white mt-6">
-          Guess you're just too bored!<br />
-          Well...welcome aboard! 😃
+        <p class="title has-text-white is-size-1">{{ title }}</p>
+        <p class="subtitle column is-half container has-text-white mt-3">
+          {{ description }}
         </p>
       </div>
       <div class="hero-foot">
@@ -63,6 +62,7 @@
 
 <script>
 export default {
+  props: ['title', 'description'],
   data() {
     return {
       isAboutModalActive: false

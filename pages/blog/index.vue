@@ -1,6 +1,7 @@
 <template>
   <div>
-    <PageHero />
+    <PageHero title="Static blog using Nuxt Content📕"
+    description="Using the Nuxt Content module, We can easily create static blogs using file formats like Markdown,YML,CSV etc. In this code example you can also find Nuxt's dynamic page routing" />
     <div class="container column is-half">
       <div v-for="blog of blogs" :key="blog.slug">
         <nuxt-link :to="{ name: 'blog-slug', params: { slug: blog.slug } }">
