@@ -1,5 +1,5 @@
 <template>
-  <article class="container card p-5 has-background-info-light">
+  <article class="container card p-5 mt-6 has-background-info-light">
     <nuxt-content :document="blog" />
   </article>
 </template>

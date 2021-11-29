@@ -5,7 +5,7 @@
     <div class="container column is-half">
       <div v-for="blog of blogs" :key="blog.slug">
         <nuxt-link :to="{ name: 'blog-slug', params: { slug: blog.slug } }">
-          <div class="container">
+          <div class="container p-3">
             <div class="box has-background-info-light">
               <div class="media">
                 <div class="media is-left">
