@@ -1,7 +1,11 @@
 <template>
+<div class="hero background is-fullheight">
+  <div>
   <article class="container card p-5 mt-6 has-background-info-light">
     <nuxt-content :document="blog" />
   </article>
+  </div>
+</div>
 </template>
 
 <script>
@@ -16,8 +20,12 @@ export default {
 
 <style>
 .nuxt-content h1 {
-  color: brown;
+  color: #3D2C8D;
   font-size: 24px;
   font-weight: 700;
+}
+
+.background {
+  background-color: #1C0C5B;
 }
 </style>
