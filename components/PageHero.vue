@@ -4,6 +4,9 @@
       <div class="hero-head">
         <nav class="navbar">
           <div class="container is-mobile">
+            <div class="navbar-start">
+                <DisplayName />
+            </div>
             <div class="navbar-end">
               <button @click="isAboutModalActive=true" class="button is-success is-rounded ml-2 mt-2 navbar-item">
                 ❔About
@@ -13,7 +16,7 @@
         </nav>
       </div>
       <div class="hero-body">
-        <p class="title has-text-white is-size-1">{{ title }}</p>
+        <h1 class="title has-text-white is-size-1">{{ title }}</h1>
         <p class="subtitle column is-half container has-text-white mt-3">
           {{ description }}
         </p>
