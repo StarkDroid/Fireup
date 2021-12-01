@@ -3,6 +3,7 @@ title: Useful links for reference on NuxtJS
 description: Will be periodically updating this on anything i find usefull that helped me learn NuxtJS. Which will now help you😃
 slug: blog-2
 img: /images/blog-2.png
+author: StarkDroid
 ---
 # Useful Links
 👉[NuxtJS Web](https://nuxtjs.org/docs/get-started/installation)<br>

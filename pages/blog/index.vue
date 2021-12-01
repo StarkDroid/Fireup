@@ -11,9 +11,10 @@
                 <div class="media is-left">
                     <img class="image is-128x128" :src="blog.img" />
                 </div>
-                <div class="media-content column is-vcentered">
+                <div class="media-content column">
                   <div class="content ml-5">
-                    <h3>{{ blog.title }}</h3>
+                    <strong>Author: </strong><span class="tag is-success">{{ blog.author }}</span>
+                    <h2>{{ blog.title }}</h2>
                     <p>{{ blog.description }}</p>
                   </div>
                 </div>
@@ -30,7 +31,7 @@
 export default {
   async asyncData({ $content, params, error }) {
     const blogs = await $content("blog", params.slug)
-      .only(["title", "description", "img", "slug"])
+      .only(["title", "description", "img", "slug", "author"])
       .sortBy("createdAt", "asc")
       .fetch();
 
