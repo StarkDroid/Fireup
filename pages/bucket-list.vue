@@ -1,7 +1,7 @@
 <template>
   <div>
     <pageHero />
-    Hello world
+    <BucketList />
   </div>
 </template>
 
