@@ -23,6 +23,6 @@ export default {
 </script>
 <style>
 body {
-  font-family: "Balsamiq Sans";
+  font-family: "Outfit";
 }
 </style>

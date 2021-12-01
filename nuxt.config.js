@@ -15,7 +15,7 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Outfit&display=swap",
       },
     ],
   },
