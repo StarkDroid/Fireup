@@ -1,6 +1,6 @@
 <template>
   <div class="p-2 level">
-    <div @click="isUserNameModalActive = true" class="level-item">
+    <div @click="isUserNameModalActive = true" class="level-item is-clickable">
       <figure class="image is-64x64">
         <img class="is-rounded" src="@/static/avatar.png">
         <!-- We are using the v-show directive to show this element only if there's no name input entered.
