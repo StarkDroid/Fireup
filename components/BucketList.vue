@@ -70,6 +70,7 @@ export default {
     submit() {
         if(this.listitem){
             this.lists.push(this.listitem)
+            this.listitem = ''
         }
       this.$buefy.notification.open({
         message: "New list item added successfully!",
