@@ -11,11 +11,16 @@
     <div class="section">
       <div class="container column is-half">
         <div
-          v-for="list in lists"
+          v-for="(list, index) in lists"
           :key="list"
           class="box has-background-success has-text-black"
         >
           {{ list }}
+          <span
+            @click="removeItem(index)"
+            class="tag is-pulled-right is-clickable is-danger"
+            >Delete</span
+          >
         </div>
       </div>
     </div>
@@ -68,14 +73,24 @@ export default {
   },
   methods: {
     submit() {
-        if(this.listitem){
-            this.lists.push(this.listitem)
-            this.listitem = ''
-        }
+      if (this.listitem) {
+        this.lists.push(this.listitem);
+        this.listitem = "";
+      }
       this.$buefy.notification.open({
         message: "New list item added successfully!",
         type: "is-success",
-        position: "is-bottom-right"
+        position: "is-bottom-right",
+      });
+    },
+
+    removeItem(index) {
+      this.$delete(this.lists, index);
+
+      this.$buefy.notification.open({
+        message: "List item removed",
+        type: "is-danger",
+        position: "is-bottom-right",
       });
     },
   },
