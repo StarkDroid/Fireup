@@ -2,8 +2,8 @@
   <div>
     <div class="container column is-half">
       <button
-        @click="isListInputModalActive = true"
-        class="button is-info is-pulled-right mr-5"
+        @click="isTodoInputModalActive = true"
+        class="button is-success is-rounded is-pulled-right mr-5"
       >
         ➕ Add item
       </button>
@@ -11,13 +11,13 @@
     <div class="section">
       <div class="container column is-half">
         <div
-          v-for="(list, index) in lists"
-          :key="list"
-          class="box has-background-success has-text-black"
+          v-for="(todo, index) in todos"
+          :key="todo"
+          class="box has-background-warning has-text-black"
         >
-          {{ list }}
+          {{ todo }}
           <span
-            @click="removeItem(index)"
+            @click="removeTodo(index)"
             class="tag is-pulled-right is-clickable is-danger"
             >Delete</span
           >
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Modal for List Input -->
-    <b-modal v-model="isListInputModalActive">
+    <b-modal v-model="isTodoInputModalActive">
       <div class="card container column is-half p-5">
         <p class="is-size-3 has-text-centered">🗒️ Fill your bucket list!</p>
         <hr class="has-background-grey-light" />
@@ -34,7 +34,7 @@
           <label class="label">Add your desired list item</label>
           <div class="control">
             <input
-              v-model="listitem"
+              v-model="todo"
               class="input is-success"
               type="text"
               placeholder="Add your list item"
@@ -46,7 +46,7 @@
           <button
             @click="
               submit();
-              isListInputModalActive = false;
+              isTodoInputModalActive = false;
             "
             class="button is-info"
           >
@@ -62,22 +62,22 @@
 export default {
   data() {
     return {
-      listitem: "",
-      lists: [
-        "I am currently learning Nuxt",
-        "This sets an example for list items",
-        "Until here, its just static strings looped using v-for",
-      ],
-      isListInputModalActive: false,
+      todo: "",
+      isTodoInputModalActive: false,
     };
+  },
+
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    },
   },
 
   methods: {
     submit() {
-      if (this.listitem) {
-        this.lists.push(this.listitem);
-        this.listitem = "";
-      }
+      this.$store.commit("addTodo", this.todo);
+      this.todo = "";
+
       this.$buefy.notification.open({
         message: "New list item added successfully!",
         type: "is-success",
@@ -85,8 +85,8 @@ export default {
       });
     },
 
-    removeItem(index) {
-      this.$delete(this.lists, index);
+    removeTodo(index) {
+      this.$store.commit("removeTodo", index);
 
       this.$buefy.notification.open({
         message: "List item removed",
