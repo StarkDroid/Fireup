@@ -7,6 +7,7 @@
             <div class="navbar-start">
                 <DisplayName />
             </div>
+            <ColorMode />
             <div class="navbar-end">
               <button @click="isAboutModalActive=true" class="button is-success is-rounded ml-2 mt-2 navbar-item">
                 ❔About
