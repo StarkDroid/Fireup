@@ -2,7 +2,12 @@
   <div>
     <PageHero title="Static blog using Nuxt Content📕"
     description="Using the Nuxt Content module, We can easily create static blogs using file formats like Markdown,YML,CSV etc. In this code example you can also find Nuxt's dynamic page routing" />
+
     <div class="container column is-half">
+      <div class="box has-background-primary-light">
+        <input v-model="query" class="input is-primary" type="search" autocomplete="off" placeholder="Search for content">
+      </div>
+
       <div v-for="blog of blogs" :key="blog.slug">
         <nuxt-link :to="{ name: 'blog-slug', params: { slug: blog.slug } }">
           <div class="container p-3">
@@ -29,7 +34,24 @@
 
 <script>
 export default {
-  async asyncData({ $content, params, error }) {
+  data() {
+    return {
+      query: '',
+      blogs: []
+    }
+  },
+
+  watch: {
+    async query(query) {
+      this.blogs = await this.$content('blog')
+      .only(["title", "description", "img", "slug", "author"])
+      .sortBy("createdAt", "asc")
+      .search(query)
+      .fetch();
+    }
+  },
+
+  async asyncData({ $content, params }) {
     const blogs = await $content("blog", params.slug)
       .only(["title", "description", "img", "slug", "author"])
       .sortBy("createdAt", "asc")
