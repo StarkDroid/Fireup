@@ -69,13 +69,13 @@ export default {
 
   computed: {
     todos() {
-      return this.$store.state.todos;
+      return this.$store.state.todos.todos;
     },
   },
 
   methods: {
     submit() {
-      this.$store.commit("addTodo", this.todo);
+      this.$store.commit("todos/addTodo", this.todo);
       this.todo = "";
 
       this.$buefy.notification.open({
@@ -86,7 +86,7 @@ export default {
     },
 
     removeTodo(index) {
-      this.$store.commit("removeTodo", index);
+      this.$store.commit("todos/removeTodo", index);
 
       this.$buefy.notification.open({
         message: "List item removed",
