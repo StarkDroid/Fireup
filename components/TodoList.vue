@@ -34,6 +34,7 @@
           <label class="label">Add your desired list item</label>
           <div class="control">
             <input
+              @keyup.enter="submit"
               v-model="todo"
               class="input is-success"
               type="text"
