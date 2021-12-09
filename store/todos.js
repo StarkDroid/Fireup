@@ -15,5 +15,9 @@ export const mutations = {
 
   removeTodo(state, index) {
     Vue.delete(state.todos, index)
+  },
+
+  removeList(state) {
+    state.todos = []
   }
 }

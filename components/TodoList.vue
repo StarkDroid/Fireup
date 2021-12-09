@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="container column is-half">
+      <button class="button is-danger is-rounded is-pulled-right" @click="removeList">
+        ❎Clear all
+      </button>
       <button
         @click="isTodoInputModalActive = true"
         class="button is-success is-rounded is-pulled-right mr-5"
@@ -95,6 +98,10 @@ export default {
         position: "is-bottom-right",
       });
     },
+
+    removeList() {
+      this.$store.commit("todos/removeList")
+    }
   },
 };
 </script>
