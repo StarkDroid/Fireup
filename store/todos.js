@@ -4,8 +4,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  addTodo(state, payload) {
-    state.todos.push(payload)
+  addTodo(state, todo) {
+    state.todos.push(todo)
   },
 
   // This removes one item from the bottom of the list when triggered but not the exact item you want to remove
@@ -13,7 +13,7 @@ export const mutations = {
   //   state.todos.splice(state.todos.indexOf(payload), 1)
   // }
 
-  removeTodo(state, payload) {
-    Vue.delete(state.todos, payload)
+  removeTodo(state, index) {
+    Vue.delete(state.todos, index)
   }
 }
