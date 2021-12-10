@@ -20,8 +20,10 @@
           v-for="(todo, index) in todos"
           :key="todo"
           class="box has-background-warning has-text-black"
+          :class="{ 'has-background-danger': isChecked }"
         >
-          {{ todo }}
+        <input @click="toggle" class="mr-4" type="checkbox" />
+          <label :class="{ completed: isChecked }">{{ todo }}</label>
           <span
             @click="removeTodo(index)"
             class="tag is-pulled-right is-clickable is-danger"
@@ -70,6 +72,7 @@ export default {
   data() {
     return {
       todo: "",
+      isChecked: false,
       isTodoInputModalActive: false,
     };
   },
@@ -107,8 +110,16 @@ export default {
     removeList() {
       this.$store.commit("todos/removeList");
     },
+
+    toggle() {
+      this.isChecked = !this.isChecked
+    }
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.completed {
+  text-decoration: line-through;
+}
+</style>
