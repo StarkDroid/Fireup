@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="container column is-half">
-      <button class="button is-danger is-rounded is-pulled-right" @click="removeList">
+      <button
+        class="button is-danger is-rounded is-pulled-right"
+        @click="removeList"
+      >
         ❎Clear all
       </button>
       <button
@@ -79,14 +82,16 @@ export default {
 
   methods: {
     submit() {
-      this.$store.commit("todos/addTodo", this.todo);
-      this.todo = "";
+      while (this.todo !== "") {
+        this.$store.commit("todos/addTodo", this.todo);
+        this.todo = "";
 
-      this.$buefy.notification.open({
-        message: "New list item added successfully!",
-        type: "is-success",
-        position: "is-bottom-right",
-      });
+        this.$buefy.notification.open({
+          message: "New list item added successfully!",
+          type: "is-success",
+          position: "is-bottom-right",
+        });
+      }
     },
 
     removeTodo(index) {
@@ -100,8 +105,8 @@ export default {
     },
 
     removeList() {
-      this.$store.commit("todos/removeList")
-    }
+      this.$store.commit("todos/removeList");
+    },
   },
 };
 </script>
