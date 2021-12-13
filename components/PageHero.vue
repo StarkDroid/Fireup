@@ -17,6 +17,10 @@
         </nav>
       </div>
       <div class="hero-body">
+        <div class="box column container is-one-fifth">
+          <p class="is-size-3">It's a Good Day!</p>
+          <span class="tag is-success is-rounded is-medium">{{ timestamp }}</span>
+        </div>
         <h1 class="title has-text-white is-size-1">{{ title }}</h1>
         <p class="subtitle column is-half container has-text-white mt-3">
           {{ description }}
@@ -70,8 +74,13 @@ export default {
   props: ['title', 'description'],
   data() {
     return {
+      timestamp: "",
       isAboutModalActive: false
     }
+  },
+
+  mounted() {
+    this.timestamp = this.$dayjs().format('ddd, MMMM DD, YYYY')
   }
 };
 </script>
