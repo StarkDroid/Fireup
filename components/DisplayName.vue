@@ -5,10 +5,10 @@
         <img class="is-rounded" src="@/static/avatar.png" />
         <!-- We are using the v-show directive to show this element only if there's no name input entered.
         The property is passed through the modal->saved in data()->Checked using v-show -->
-        <small v-show="!username" class="has-text-white">👆Click me</small>
+        <small v-show="!user" class="has-text-white">👆Click me</small>
       </figure>
       <div class="level-item">
-        <p class="ml-2 has-text-white is-size-5">{{ username }}</p>
+        <p class="ml-2 has-text-white is-size-5">{{ user }}</p>
       </div>
     </div>
 
@@ -18,12 +18,12 @@
         <p class="has-text-black">Set your Username🖋️</p>
         <p>
           <small
-            >Close the modal to apply changes, The entered text will disappear
-            when switching to a different tab as we are not using state
-            management yet</small
+            >Close the modal to apply changes, The entered text will be saved in local storage,
+            Switch tabs to see the changes!</small
           >
         </p>
         <input
+          @input="saveUsername"
           v-model="username"
           class="input is-success"
           type="text"
@@ -38,9 +38,20 @@ export default {
   data() {
     return {
       username: "",
+      user: "",
       isUserNameModalActive: false,
     };
   },
+
+  mounted() {
+    this.user = localStorage.getItem('name')
+  },
+
+  methods: {
+    saveUsername() {
+      localStorage.setItem('name', this.username)
+    }
+  }
 };
 </script>
 
