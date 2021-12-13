@@ -1,5 +1,5 @@
 <template>
-  <div class="select mt-2">
+  <div class="select mt-2 is-small">
     <select v-model="$colorMode.preference">
       <option value="light">Light Mode</option>
       <option value="dark">Dark Mode</option>
