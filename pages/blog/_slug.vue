@@ -3,6 +3,7 @@
   <div>
   <article class="container card p-5 mt-6 has-background-info-light">
     <nuxt-content :document="blog" />
+    <nuxt-link class="is-pulled-right" to="/blog">🔙 back to blogs </nuxt-link>
   </article>
   </div>
 </div>
