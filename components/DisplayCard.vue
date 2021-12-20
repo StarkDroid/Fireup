@@ -30,8 +30,7 @@ data() {
 async fetch() {
   this.event = await fetch("https://www.boredapi.com/api/activity")
   .then(res => res.json())
-},
-fetchOnServer: false
+}
 }
 </script>
 
