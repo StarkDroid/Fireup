@@ -2,7 +2,7 @@
   <div class="p-2 level">
     <div @click="isUserNameModalActive = true" class="level-item is-clickable">
       <figure class="image is-64x64">
-        <img class="is-rounded" src="https://avatars.dicebear.com/api/bottts/${user}.svg" />
+        <img class="is-rounded" :src="avatar" />
         <!-- We are using the v-show directive to show this element only if there's no name input entered.
         The property is passed through the modal->saved in data()->Checked using v-show -->
         <small v-show="!user" class="has-text-white">👆Click me</small>
@@ -39,17 +39,25 @@ export default {
     return {
       username: "",
       user: "",
+      avatar: null,
       isUserNameModalActive: false,
     };
   },
 
   mounted() {
     this.user = localStorage.getItem('name')
+    console.log(this.user)
+    this.getAvatar()
   },
 
   methods: {
     saveUsername() {
       localStorage.setItem('name', this.username)
+    },
+
+    getAvatar() {
+      this.avatar = `https://avatars.dicebear.com/api/bottts/${this.user}.svg`
+      console.log(this.avatar)
     }
   },
 };
