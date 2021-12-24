@@ -56,7 +56,7 @@ export default {
           measurementId: 'G-8T2DWWVPH7'
         },
         services: {
-          // Anything can be added here
+          firestore: true
         }
       }
     ],
