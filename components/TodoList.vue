@@ -17,15 +17,15 @@
     <div class="section">
       <div class="container column is-half">
         <div
-          v-for="(todo, index) in todos"
-          :key="todo"
+          v-for="todo in todos"
+          :key="todo.id"
           class="box has-background-warning has-text-black"
-          :class="{ 'has-background-danger': isChecked }"
+          :class="{ 'has-background-danger': todo.done }"
         >
-        <input @click="toggle" class="mr-4" type="checkbox" />
-          <label :class="{ completed: isChecked }">{{ todo }}</label>
+        <input :checked="todo.done" @change="toggle(todo)" class="mr-4" type="checkbox" />
+          <label :class="{ completed: todo.done }">{{ todo.text }}</label>
           <span
-            @click="removeTodo(index)"
+            @click="removeTodo(todo)"
             class="tag is-pulled-right is-clickable is-danger"
             >Delete</span
           >
@@ -43,24 +43,11 @@
           <div class="control">
             <input
               @keyup.enter="submit"
-              v-model="todo"
               class="input is-success"
               type="text"
               placeholder="Add your list item"
             />
           </div>
-        </div>
-        <div class="control">
-          <!-- We can declare multiple functions like this, semi-colon is the key here! -->
-          <button
-            @click="
-              submit();
-              isTodoInputModalActive = false;
-            "
-            class="button is-info"
-          >
-            Submit
-          </button>
         </div>
       </div>
     </b-modal>
@@ -68,26 +55,25 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      todo: "",
-      isChecked: false,
       isTodoInputModalActive: false,
     };
   },
 
   computed: {
     todos() {
-      return this.$store.state.todos.todos;
+      return this.$store.state.todos.list;
     },
   },
 
   methods: {
-    submit() {
-      while (this.todo !== "") {
-        this.$store.commit("todos/addTodo", this.todo);
-        this.todo = "";
+    submit(event) {
+      while (event.target.value !== "") {
+        this.$store.commit("todos/add", event.target.value);
+        event.target.value = "";
 
         this.$buefy.notification.open({
           message: "New list item added successfully!",
@@ -97,8 +83,8 @@ export default {
       }
     },
 
-    removeTodo(index) {
-      this.$store.commit("todos/removeTodo", index);
+    removeTodo(todo) {
+      this.$store.commit("todos/remove", todo);
 
       this.$buefy.notification.open({
         message: "List item removed",
@@ -111,9 +97,9 @@ export default {
       this.$store.commit("todos/removeList");
     },
 
-    toggle() {
-      this.isChecked = !this.isChecked
-    }
+    ...mapMutations({
+      toggle: 'todos/toggle'
+    }),
   },
 };
 </script>

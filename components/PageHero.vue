@@ -34,7 +34,6 @@
             <li><nuxt-link class="has-text-black" to="bucket-list">Bucket List</nuxt-link></li>
             <li><nuxt-link class="has-text-black" to="todo-page">Todo List (VueX)</nuxt-link></li>
             <li><nuxt-link class="has-text-black" to="blog">Blog</nuxt-link></li>
-            <li><nuxt-link class="has-text-black" to="sample">Sample</nuxt-link></li>
             </ul>
           </div>
         </nav>
